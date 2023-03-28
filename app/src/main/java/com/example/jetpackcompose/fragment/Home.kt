@@ -156,9 +156,10 @@ fun Home_back(){
 
 @Composable
 fun Home_front(){
-    Spacer(modifier = Modifier.height(10.dp))
-    Text_Front()
-    Spacer(modifier = Modifier.height(10.dp))
+    Spacer(modifier = Modifier.height(20.dp))
+    //Text_Front()
+    Column_w()
+    Spacer(modifier = Modifier.height(20.dp))
     //List truyện theo chiều dọc
     LazyColumn(contentPadding = PaddingValues(vertical = 16.dp)) {
 
@@ -202,6 +203,14 @@ fun Home_front(){
             }
 
         }
+    }
+}
+
+@Composable
+fun Column_w(){
+    Column(Modifier.wrapContentSize().fillMaxSize().padding(8.dp),
+    verticalArrangement = Arrangement.Top, horizontalAlignment = Alignment.Start) {
+        Text_Front()
     }
 }
 

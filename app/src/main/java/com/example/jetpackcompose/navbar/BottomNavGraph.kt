@@ -1,9 +1,11 @@
 package com.example.jetpackcompose.navbar
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcompose.Account
 import com.example.jetpackcompose.Books
 import com.example.jetpackcompose.Home
@@ -22,9 +24,9 @@ NavHost(navController = navController, startDestination = BottomNav.Home.route  
         Books(openBooksAction = { navController.navigate("books") })
     }
     composable(BottomNav.Account.route){
-        Account(openAccountAction  ={navController.navigate("account")} )
+        Account(openAccountAction  ={navController.navigate("account")},
+                openLogin = {navController.navigate(("login"))})
     }
-
 
 }
 }
