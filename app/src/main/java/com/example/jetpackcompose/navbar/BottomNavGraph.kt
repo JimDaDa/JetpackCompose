@@ -1,14 +1,16 @@
 package com.example.jetpackcompose.navbar
 
+import Login
+import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.jetpackcompose.Account
-import com.example.jetpackcompose.Books
-import com.example.jetpackcompose.Home
+import com.example.jetpackcompose.*
+import com.example.jetpackcompose.item.book1
+import com.example.jetpackcompose.item.book_detail
+import com.example.jetpackcompose.item.bookitems
+
 
 @Composable
 //Chuyển trang tương ứng trong Bottom nav
@@ -17,7 +19,14 @@ fun BottomNavGraph(navController: NavHostController){
 
 NavHost(navController = navController, startDestination = BottomNav.Home.route  ){
     composable(BottomNav.Home.route){
-        Home(openHomeAction ={navController.navigate("home")} )
+
+//        Home(openDetails = homeViewModel, openHomeAction ={navController.navigate("home")}, booki = homeViewModel)
+        Home(
+            //omeViewModel= homeViewModel,
+            openHomeAction = {navController.navigate("home")},
+            bookit = bookitems,
+            openDetails ={navController.navigate("details")}
+        )
     }
 
     composable(BottomNav.Books.route){
@@ -25,8 +34,40 @@ NavHost(navController = navController, startDestination = BottomNav.Home.route  
     }
     composable(BottomNav.Account.route){
         Account(openAccountAction  ={navController.navigate("account")},
-                openLogin = {navController.navigate(("login"))})
+                openLogin = {navController.navigate(("login"))}, openEdit = {navController.navigate("edit")})
+    }
+    composable("edit"){
+        Edit_pro5(
+            openEdit_pro5={navController.navigate("edit")},
+         openAccount = {navController.navigate(BottomNav.Account.route)})
     }
 
+    composable("login") {
+        //Ở trang Login có 3 hàm: hàm mở trang Login, hàm mở trang Sign Up và hàm mở trang Home
+        Login(
+
+            openLoginAction={
+                navController.navigate("login")
+            },
+            openSignUp={
+                navController.navigate("SignUp")
+            },
+            openMainScreen ={navController.navigate("mainscreen")})
+
+    }
+    composable(Books.BookList.route){
+
+    }
+
+    composable(Books.BookDetails.route){
+
+    }
+
+    composable("details"){
+        Book_Details(post = book1, state = LazyListState())
+
+       // Book_Details(post = BookItem(id="", title = "", cover =1 , authors = "", details = "" ), state = LazyListState())
+    }
 }
+
 }

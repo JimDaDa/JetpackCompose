@@ -25,47 +25,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcompose.funtion_books.ListItem
 import com.example.jetpackcompose.item.bookitems
+import com.example.jetpackcompose.ui.theme.font_heading
+import com.example.jetpackcompose.ui.theme.font_title
 
 @Composable
 fun Books(openBooksAction: () -> Unit){
    Box(modifier = Modifier
        .fillMaxSize()
        .background(colorResource(id = R.color.background))) {
-
       //List View
        ListItem()
        }
    }
 
-@Composable
-fun ListItem(){
 
-    Column(modifier = Modifier.fillMaxSize()) {
-        LazyVerticalGrid(columns = GridCells.Fixed(2),
-                        contentPadding = PaddingValues(28.dp) ){
-
-            items(bookitems){
-                book ->
-
-                Column(Modifier.width(150.dp)) {
-
-                    Image(painter = painterResource(id = book.cover),
-                        contentDescription ="Book Cover",
-                        modifier = Modifier
-                            .padding(15.dp)
-                            .aspectRatio(1f)
-                            .fillMaxWidth())
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = book.title,fontFamily = FontFamily.SansSerif,
-                        fontWeight = FontWeight.Bold,
-                        color = colorResource(id = R.color.nau),
-                        fontSize = 16.sp,
-                        textAlign = TextAlign.Center)
-
-                }
-
-            }
-        }
-    }
-}

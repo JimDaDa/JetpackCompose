@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JetpackCompose</string>
+    <string name="list">Back</string>
+    <string name="details">Book Details</string>
 </resources>
