@@ -1,6 +1,5 @@
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import com.example.jetpackcompose.R
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -19,7 +18,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -75,7 +73,7 @@ fun SignUp(openSignUpAction: () -> Unit, openLogin: () -> Unit, openHome: () -> 
                 Spacer(modifier = Modifier.padding(10.dp))
 
                 //Gọi hàm button
-                ClickSignUp()
+                ClickSignUp(openSignUpAction)
                 Spacer(modifier = Modifier.padding(10.dp))
                 Text(
                     text = "Have an account? Go to Login",
@@ -164,9 +162,9 @@ fun TypeSignUp(){
 }
 //Hàm button Login
 @Composable
-fun ClickSignUp(){
+fun ClickSignUp(openSignUpAction: () -> Unit){
     Button(
-        onClick = {},
+        onClick = {openSignUpAction()},
         colors = ButtonDefaults.buttonColors(
             backgroundColor =
             colorResource(id = R.color.hong), contentColor = Color.White

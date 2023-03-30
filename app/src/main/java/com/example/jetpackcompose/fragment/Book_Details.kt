@@ -1,12 +1,10 @@
-package com.example.jetpackcompose
+package com.example.jetpackcompose.fragment
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,19 +18,19 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcompose.R
 import com.example.jetpackcompose.item.*
-import com.example.jetpackcompose.ui.theme.font_heading
 import com.example.jetpackcompose.ui.theme.font_title
 
 @Composable
 
-fun Book_Details(post: BookItem,
+fun Book_Details(post: BookItem,bookHot: BookHot,bookFiction: BookFiction,bookDetective: BookDetective,
                     state: LazyListState= rememberLazyListState())
 {
     LazyColumn(contentPadding = PaddingValues(16.dp), modifier = Modifier.fillMaxSize(), state = state){
-        postContentitem(post) }
+        postContentitem(post,bookHot,bookFiction,bookDetective) }
 }
-fun LazyListScope.postContentitem(post: BookItem){
+fun LazyListScope.postContentitem(post: BookItem, bookHot: BookHot,bookFiction: BookFiction,bookDetective: BookDetective){
     item {
 
         Box(modifier = Modifier
@@ -47,9 +45,9 @@ fun LazyListScope.postContentitem(post: BookItem){
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-                    Image_cover(post)
+                    Image_cover(post,bookHot,bookFiction,bookDetective)
                     Spacer(modifier = Modifier.height(18.dp))
-                    Details(post)
+                    Details(post,bookHot,bookFiction,bookDetective)
                     Spacer(modifier = Modifier.height(18.dp))
                     //Button
                     Button(
@@ -75,7 +73,7 @@ fun LazyListScope.postContentitem(post: BookItem){
 }
 
 @Composable
-fun Image_cover(post: BookItem){
+fun Image_cover(post: BookItem,bookHot: BookHot,bookFiction: BookFiction,bookDetective: BookDetective){
     Image(
         painter = painterResource(id = post.cover),
         contentDescription = "Book Cover",
@@ -85,10 +83,11 @@ fun Image_cover(post: BookItem){
         Alignment.Center,
         contentScale = ContentScale.Crop
     )
+
 }
 
 @Composable
-fun Details(post: BookItem){
+fun Details(post: BookItem,bookHot: BookHot,bookFiction: BookFiction,bookDetective: BookDetective){
 
     Text(
         text = post.title, fontFamily = font_title,
@@ -116,5 +115,5 @@ fun Details(post: BookItem){
 @Composable
 
 fun Preview(){
-    Book_Details(post = book1)
+    Book_Details(post = book1, bookHot= book2, bookFiction= book3,bookDetective=book4)
 }

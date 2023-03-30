@@ -13,34 +13,6 @@ val bookitems= listOf(
     BookItem("book7","Harry Potter và bảo bối tử thần", R.drawable.book7,"","")
 )
 
-val book_detective = listOf(
-   BookItem("book8","Chuộc Tội", R.drawable.book8,"Minato Kanae",""),
-    BookItem("book9","Thú Tội", R.drawable.book9,"Minato Kanae",""),
-    BookItem("book10","Thiếu Nữ (Shoujo)", R.drawable.book10,"Minato Kanae",""),
-     BookItem("book11","Án Mạng Mười Một Chữ", R.drawable.book11,"Higashino Keigo",""),
-    BookItem("book12","Sherlock Holmes", R.drawable.book12,"Arthur Conan Doyle",""),
-    BookItem("book13","The Shining - Thị Kiến", R.drawable.book13,"Stephen King",""),
-    BookItem("book14","Án Tây Du", R.drawable.book14,"Trần Tiệm",""))
-
-val book_hot = listOf(
-    BookItem("book15","Bạn Không Thông Minh Lắm Đâu", R.drawable.book15,"",""),
-    BookItem( "book16","Bạn Đỡ Ngu Ngơ Rồi Đấy", R.drawable.book16,"",""),
-    BookItem("book17","Chuyện con mèo lập kèo cứu sách", R.drawable.book17,"",""),
-    BookItem("book18","IT - Gã Hề Ma Quái - Tập 1", R.drawable.book18,"",""),
-    BookItem("book19","IT - Gã Hề Ma Quái - Tập 2", R.drawable.book19,"",""),
-    BookItem("book20","Một Thoáng Ta Rực Rỡ Ở Nhân Gian", R.drawable.book20,"",""),
-    BookItem("book21","Điều Kỳ Diệu Của Tiệm Tạp Hóa NAMIYA", R.drawable.book21,"","")
-)
-
-val book_fiction = listOf(
-    BookItem("book22","Percy Jackson và Kẻ Cắp Tia Chớp", R.drawable.book22,"",""),
-    BookItem( "book23","Percy Jackson và Biển Quái Vật", R.drawable.book23,"",""),
-    BookItem("book24","Hoàng Tử Bé", R.drawable.book24,"",""),
-    BookItem("book25","Nhà Giả Kim", R.drawable.book25,"",""),
-    BookItem("book26","Tôi Không Thích Ồn Ào", R.drawable.book26,"",""),
-    BookItem("book27","Sữa Và Mật", R.drawable.book27,"",""),
-    BookItem("book28","Xuân Hạ Thu Đông ", R.drawable.book28,"","")
-)
 
 val book1= BookItem("book1","Harry Potter và Hòn đá Phù Thủy", R.drawable.book1,"J.K Rowling","Vào ngày sinh nhật lần thứ 11, " +
         "Harry Potter nhận được thư gọi nhập trường phù thủy Hogwarts," +

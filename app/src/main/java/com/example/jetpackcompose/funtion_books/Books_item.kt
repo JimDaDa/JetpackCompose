@@ -15,7 +15,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpackcompose.item.bookitems
 import com.example.jetpackcompose.ui.theme.font_title
 import com.example.jetpackcompose.R
 import com.example.jetpackcompose.item.BookItem

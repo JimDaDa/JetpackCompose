@@ -1,12 +1,7 @@
-package com.example.jetpackcompose
+package com.example.jetpackcompose.graph
 
-import androidx.compose.animation.AnimatedContent
-import androidx.compose.animation.AnimatedContentScope.SlideDirection.Companion.Down
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.animation.core.Easing
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -17,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
@@ -26,17 +20,15 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcompose.R
 import com.example.jetpackcompose.navbar.BottomNav
-import com.example.jetpackcompose.navbar.BottomNav.Account.icon
-import com.example.jetpackcompose.navbar.BottomNavGraph
-import com.example.jetpackcompose.ui.theme.Purple200
 
 @Composable
 
 fun MainScreen(openMainScreenAction: () -> Unit){
     val navController = rememberNavController()
 
-    Scaffold( bottomBar = {BottomBar(navController=navController)}, backgroundColor = colorResource(
+    Scaffold( bottomBar = { BottomBar(navController=navController) }, backgroundColor = colorResource(
         id = R.color.bar
     )) { paddingValues ->
         Row(modifier = Modifier

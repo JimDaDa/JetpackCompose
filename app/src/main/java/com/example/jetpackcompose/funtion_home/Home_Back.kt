@@ -21,13 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpackcompose.Book_Details
-import com.example.jetpackcompose.item.bookitems
 import com.example.jetpackcompose.R
-import com.example.jetpackcompose.item.BookItem
-import com.example.jetpackcompose.item.book_fiction
-import com.example.jetpackcompose.item.book_hot
-import com.example.jetpackcompose.navbar.Books
+import com.example.jetpackcompose.item.*
 import com.example.jetpackcompose.ui.theme.font_heading
 import com.example.jetpackcompose.ui.theme.font_title
 
@@ -149,7 +144,7 @@ fun Title(booki: BookItem){
 //truyện hot
 
 @Composable
-fun Home_back_hot(){
+fun Home_back_hot(book_hot: List<BookHot>, openDetails: (String)-> Unit){
     Column() {
         Row(
             Modifier
@@ -178,7 +173,8 @@ fun Home_back_hot(){
                     contentDescription = "Book Cover",
                     modifier = Modifier
                         .padding(15.dp)
-                        .size(220.dp, 180.dp),
+                        .size(220.dp, 180.dp)
+                        .clickable(enabled = true, onClick = {openDetails(book.id)}),
                     contentScale = ContentScale.Crop
                 )
                 Spacer(modifier = Modifier.height(8.dp))
@@ -198,7 +194,7 @@ fun Home_back_hot(){
 }
 //Fiction
 @Composable
-fun Home_back_fiction(){
+fun Home_back_fiction(book_fiction: List<BookFiction>, openDetails: (String)-> Unit){
     Column() {
         Row(
             Modifier
@@ -227,7 +223,8 @@ fun Home_back_fiction(){
                     contentDescription = "Book Cover",
                     modifier = Modifier
                         .padding(15.dp)
-                        .size(220.dp, 180.dp),
+                        .size(220.dp, 180.dp)
+                        .clickable(enabled = true, onClick = {openDetails(book.id)}),
                     contentScale = ContentScale.Crop
                 )
                 Spacer(modifier = Modifier.height(8.dp))

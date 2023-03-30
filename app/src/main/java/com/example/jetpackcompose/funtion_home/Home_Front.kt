@@ -2,32 +2,24 @@ package com.example.jetpackcompose.funtion_home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpackcompose.BottomBar
-import com.example.jetpackcompose.item.book_detective
 import com.example.jetpackcompose.R
-import com.example.jetpackcompose.funtion_books.ListItem
-import com.example.jetpackcompose.navbar.BottomNavGraph
-import com.example.jetpackcompose.ui.theme.font_heading
+import com.example.jetpackcompose.item.BookDetective
 import com.example.jetpackcompose.ui.theme.font_title
 
 //Phần sheet bottom
@@ -43,7 +35,7 @@ fun Text_Front(){
     )
 }
 @Composable
-fun Home_front() {
+fun Home_front(book_detective: List<BookDetective>, openDetails: (String)-> Unit) {
     Spacer(modifier = Modifier.height(20.dp))
     //Text_Front()
     Scaffold(topBar = {
@@ -83,6 +75,7 @@ fun Home_front() {
                             modifier = Modifier
                                 .padding(15.dp)
                                 .aspectRatio(1f)
+                                .clickable(enabled = true, onClick = {openDetails(book.id)})
                                 .fillMaxHeight(), contentScale = ContentScale.FillHeight
                         )
                         Column(Modifier.weight(1f)) {

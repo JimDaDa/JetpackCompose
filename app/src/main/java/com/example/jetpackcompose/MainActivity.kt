@@ -12,10 +12,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.jetpackcompose.navbar.BottomNav
+import com.example.jetpackcompose.graph.MainScreen
 import com.example.jetpackcompose.ui.theme.JetpackComposeTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity() : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -44,6 +44,7 @@ fun Main() {
 
                     openLoginAction={
                                     navController.navigate("login")
+                                     navController.popBackStack()
                     },
                     openSignUp={
                                navController.navigate("SignUp")
@@ -54,7 +55,7 @@ fun Main() {
                 SignUp(
                     openSignUpAction = {
                         //Chuyển trang đến SignUp
-                    navController.navigate("SignUp") },
+                    navController.navigate("login") },
 
                     openLogin = {
                     navController.navigate("login") }) {
@@ -66,6 +67,7 @@ fun Main() {
                     navController.navigate("mainscreen")
                 })
             }
+
     }
 }
 
