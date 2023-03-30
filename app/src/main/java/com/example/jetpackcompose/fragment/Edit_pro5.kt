@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -25,8 +26,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcompose.ui.theme.font_heading
+import com.example.jetpackcompose.ui.theme.font_title
 
 @Composable
 
@@ -34,12 +38,26 @@ fun Edit_pro5( openEdit_pro5:() -> Unit, openAccount:() -> Unit){
     Box(modifier = Modifier
         .fillMaxSize()
         .background(colorResource(id = R.color.background))) {
+        TopAppBar(title = {
+            Text(
+                text = "Edit Profile",
+                fontFamily = font_heading,
+                fontWeight = FontWeight.Bold,
+                color = colorResource(id = R.color.nau),
+                fontSize = 20.sp,
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+            )
+        }, navigationIcon = {
+            IconButton(onClick = {openAccount() }){
+                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back", Modifier.padding(horizontal = 5.dp)) }
+            },
 
+            elevation = 0.dp,
+            backgroundColor = Color.Transparent)
         Column(modifier = Modifier
-            .fillMaxWidth()
-            .background(colorResource(id = R.color.background))
+            .fillMaxSize()
             .padding(70.dp),
-            verticalArrangement = Arrangement.Center,
+            verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally) {
 
             //Hàm Set ảnh ava
@@ -55,9 +73,7 @@ fun Edit_pro5( openEdit_pro5:() -> Unit, openAccount:() -> Unit){
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-//                Column(modifier = Modifier
-//            .fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(0.dp),
-//            horizontalAlignment =  Alignment.CenterHorizontally) {
+
                     Image(
                         painterResource(id = R.drawable.user_ava),
                         contentDescription = "Avatar",
@@ -79,11 +95,23 @@ fun Edit_pro5( openEdit_pro5:() -> Unit, openAccount:() -> Unit){
                             alignment = Alignment.Center
                         )
                     }
+                    Spacer(modifier = Modifier.height(10.dp))
 
                 }
 
             }
+            Spacer(modifier = Modifier.height(10.dp))
+            //Text view tên hiển thị
+            Text(text = "Cao Nguyễn Kỳ Duyên",
+                modifier = Modifier.padding(1.dp),
+                fontFamily = font_title,
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+                color = colorResource(
+                    id = R.color.nau),
+                textAlign= TextAlign.Center)
         }
+        Spacer(modifier = Modifier.height(10.dp))
             // Hàm Hiển thị tên và email
             Column(
                 modifier = Modifier

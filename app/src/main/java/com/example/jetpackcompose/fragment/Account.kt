@@ -22,21 +22,36 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcompose.ui.theme.font_heading
 import com.example.jetpackcompose.ui.theme.font_title
 
 @Composable
 fun Account(openAccountAction: () -> Unit, openLogin: () -> Unit, openEdit: () -> Unit){
-   Box(modifier = Modifier
-       .fillMaxSize()
-       .background(colorResource(id = R.color.background))) {
+
+    Box(modifier = Modifier
+        .fillMaxSize()
+        .background(colorResource(id = R.color.background))) {
+
+        TopAppBar(title = {
+            Text(
+                text = "Account",
+                fontFamily = font_heading,
+                fontWeight = FontWeight.Bold,
+                color = colorResource(id = R.color.nau),
+                fontSize = 20.sp,
+                modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+            )
+        },
+
+            elevation = 0.dp,
+            backgroundColor = Color.Transparent)
+
 
       Column(modifier = Modifier
-          .fillMaxWidth()
-          .background(colorResource(id = R.color.background))
-          .padding(70.dp),
-          verticalArrangement = Arrangement.Center,
+          .fillMaxSize().padding(50.dp),
+          verticalArrangement = Arrangement.Top,
           horizontalAlignment = Alignment.CenterHorizontally) {
-
+            Spacer(modifier = Modifier.height(10.dp))
           //Hàm Set ảnh ava
           Box( modifier = Modifier
               .fillMaxWidth(), contentAlignment = Alignment.Center) {
@@ -104,12 +119,6 @@ fun Account(openAccountAction: () -> Unit, openLogin: () -> Unit, openEdit: () -
        }
    }
 
-@Composable
-fun SetAva(){
-
-
-
-}
 
 @Composable
 fun ShowInfo(){

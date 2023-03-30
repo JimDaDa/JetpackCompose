@@ -1,6 +1,7 @@
 package com.example.jetpackcompose.funtion_books
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -17,12 +18,14 @@ import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.item.bookitems
 import com.example.jetpackcompose.ui.theme.font_title
 import com.example.jetpackcompose.R
+import com.example.jetpackcompose.item.BookItem
 
 //Hàm danh sách của thư viện => file Books
 @Composable
-fun ListItem(){
+fun ListItem(bookitems: List<BookItem>, openDetails: (String)-> Unit){
 
     Column(modifier = Modifier.fillMaxSize()) {
+        Spacer(modifier = Modifier.height(15.dp))
         LazyVerticalGrid(columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(28.dp) ){
 
@@ -36,7 +39,8 @@ fun ListItem(){
                         modifier = Modifier
                             .padding(15.dp)
                             .aspectRatio(1f)
-                            .fillMaxWidth())
+                            .fillMaxWidth()
+                            .clickable(enabled = true, onClick = { openDetails(book.id) }),)
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(text = book.title,fontFamily = font_title,
                         fontWeight = FontWeight.Bold,

@@ -7,9 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.jetpackcompose.*
-import com.example.jetpackcompose.item.book1
-import com.example.jetpackcompose.item.book_detail
-import com.example.jetpackcompose.item.bookitems
+import com.example.jetpackcompose.item.*
 
 
 @Composable
@@ -30,7 +28,7 @@ NavHost(navController = navController, startDestination = BottomNav.Home.route  
     }
 
     composable(BottomNav.Books.route){
-        Books(openBooksAction = { navController.navigate("books") })
+        Books(openBooksAction = { navController.navigate("books") }, bookitems = bookitems, openDetails = {navController.navigate("details")})
     }
     composable(BottomNav.Account.route){
         Account(openAccountAction  ={navController.navigate("account")},
@@ -63,7 +61,7 @@ NavHost(navController = navController, startDestination = BottomNav.Home.route  
 
     }
 
-    composable("details"){
+    composable(route= "details"){
         Book_Details(post = book1, state = LazyListState())
 
        // Book_Details(post = BookItem(id="", title = "", cover =1 , authors = "", details = "" ), state = LazyListState())
