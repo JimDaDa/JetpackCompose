@@ -30,66 +30,37 @@ import androidx.navigation.compose.rememberNavController
 fun Login( openLoginAction: () -> Unit, openSignUp: () -> Unit, openMainScreen: () -> Unit) {
     val navController = rememberNavController()
     //Layout lớn
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .background(colorResource(id = R.color.background)), contentAlignment = Alignment.Center) {
-
+    Box(modifier = Modifier.fillMaxSize().background(colorResource(id = R.color.background)), contentAlignment = Alignment.Center) {
         //Layout Box để chứa hình
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.White), contentAlignment = Alignment.TopCenter
-        ) {
+        Box(modifier = Modifier.fillMaxSize().background(Color.White), contentAlignment = Alignment.TopCenter) {
             //Gọi hàm chứa hình
-            DisplayImage()
-        }
-
+            DisplayImage() }
         //Layout chứa các textfield và button theo chiều dọc
         Column(
             //Căn giữa
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .fillMaxSize()
-                .fillMaxWidth()
-                .fillMaxHeight(0.60f)
-                .padding(10.dp)
+            modifier = Modifier.fillMaxSize().fillMaxWidth().fillMaxHeight(0.60f).padding(10.dp)
         ) {
             //Thêm khoảng cách giữa hình và các text field là 220dp
             Spacer(modifier = Modifier.height(260.dp))
 
             Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .fillMaxHeight(0.60f)
-                    .padding(10.dp),
+                modifier = Modifier.fillMaxSize().fillMaxHeight(0.60f).padding(10.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-
                 //Gọi hàm các text field
-
                 TypeLogin()
+                //Khoảng cách giữa các outlinetextfield với button là 10.dp
                 Spacer(modifier = Modifier.padding(10.dp))
-
-
-                //Button
+                //Button đăng nhập
                 Button(
                     //Khi click vòa button sẽ chuyển sang trang màn hình chính
-                    onClick = {
-                        openMainScreen()
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor =
-                        colorResource(id = R.color.hong), contentColor = Color.White
-                    ),
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .height(50.dp)
-                )
-                {
-                    Text(text = "LOGIN")
-                }
+                    onClick = { openMainScreen() },
+                    colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.hong), contentColor = Color.White),
+                    modifier = Modifier.fillMaxWidth(0.8f).height(50.dp)) { Text(text = "LOGIN") }
+                //Khoảng cách 10dp
 
                 Spacer(modifier = Modifier.padding(10.dp))
                 Text(
@@ -97,15 +68,7 @@ fun Login( openLoginAction: () -> Unit, openSignUp: () -> Unit, openMainScreen: 
                     text = "Create An Account",
                     modifier = Modifier.clickable(onClick = {
                         //Click vòa Text View sẽ chuyển sang trang Sign Up
-                        openSignUp()
-
-                    }
-                    )
-                )
-            }
-
-        }
-    }
+                        openSignUp() })) } } }
 }
 
 //Hàm chứa ảnh
@@ -127,19 +90,12 @@ fun DisplayImage(){
 //Hàm các text field
 @Composable
 fun TypeLogin(){
-    var email by remember {
-        mutableStateOf("")
-    }
-    var pass by remember {
-        mutableStateOf("")
-    }
+    var email by remember { mutableStateOf("") }
+    var pass by remember { mutableStateOf("") }
     val passwordVisibility = remember { mutableStateOf(false) }
     val focusRequester = remember { FocusRequester() }
-
-
-    OutlinedTextField(value = email, onValueChange = { newValue ->
-        email = newValue
-    }, textStyle = TextStyle(
+    //Nhập Email
+    OutlinedTextField(value = email, onValueChange = { newValue -> email = newValue }, textStyle = TextStyle(
         color = Color.Black,
         fontSize = 16.sp,
         fontFamily = FontFamily.SansSerif,
@@ -154,6 +110,7 @@ fun TypeLogin(){
             IconButton(onClick = { email = "" })
             { Icon(Icons.Default.Clear, contentDescription = "Delete") }
         })
+
     Spacer(modifier = Modifier.padding(10.dp))
 
     OutlinedTextField(value = pass, onValueChange = { newValue ->

@@ -9,11 +9,9 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Card
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -29,6 +27,7 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.funtion_books.ListItem
+import com.example.jetpackcompose.funtion_home.Text_Front
 import com.example.jetpackcompose.item.BookItem
 import com.example.jetpackcompose.item.bookitems
 import com.example.jetpackcompose.ui.theme.font_heading
@@ -40,23 +39,35 @@ fun Books(openBooksAction: () -> Unit, bookitems: List<BookItem>, openDetails: (
    Box(modifier = Modifier
        .fillMaxSize()
        .background(colorResource(id = R.color.background))) {
-       TopAppBar(title = {
-           Text(
-               text = "Library",
-               fontFamily = font_heading,
-               fontWeight = FontWeight.Bold,
-               color = colorResource(id = R.color.nau),
-               fontSize = 20.sp,
-               modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
-           )
-       },
 
-           elevation = 0.dp,
-           backgroundColor = Color.Transparent)
-       
 
-      //List View
-       ListItem(openDetails =openDetails, bookitems = bookitems)
+           Scaffold(topBar = {
+               //Thanh top bar
+               TopAppBar(title = {
+                   Text(
+                       text = "Library",
+                       fontFamily = font_heading,
+                       fontWeight = FontWeight.Bold,
+                       color = colorResource(id = R.color.nau),
+                       fontSize = 20.sp,
+                       modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                   )
+               },
+
+                   elevation = 0.dp,
+                   backgroundColor = colorResource(id = R.color.background))
+
+           }){
+                   paddingValues ->
+               Row(modifier = Modifier
+                   .background(colorResource(id = R.color.background))
+                   .padding(paddingValues)
+               ) {
+                   //List View
+                   ListItem(openDetails =openDetails, bookitems = bookitems)
+               }
+           }
+
        }
    }
 

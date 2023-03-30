@@ -32,8 +32,6 @@ fun Book_Details(post: BookItem,
     LazyColumn(contentPadding = PaddingValues(16.dp), modifier = Modifier.fillMaxSize(), state = state){
         postContentitem(post) }
 }
-
-
 fun LazyListScope.postContentitem(post: BookItem){
     item {
 

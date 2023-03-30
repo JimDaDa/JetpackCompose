@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.jetpackcompose.funtion_home.Text_Front
 import com.example.jetpackcompose.ui.theme.font_heading
 import com.example.jetpackcompose.ui.theme.font_title
 
@@ -31,92 +32,82 @@ fun Account(openAccountAction: () -> Unit, openLogin: () -> Unit, openEdit: () -
     Box(modifier = Modifier
         .fillMaxSize()
         .background(colorResource(id = R.color.background))) {
+        Scaffold(topBar = {
+            //Thanh top bar
+            TopAppBar(title = {
+                Text(
+                    text = "Account",
+                    fontFamily = font_heading,
+                    fontWeight = FontWeight.Bold,
+                    color = colorResource(id = R.color.nau),
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                )
+            },
 
-        TopAppBar(title = {
-            Text(
-                text = "Account",
-                fontFamily = font_heading,
-                fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.nau),
-                fontSize = 20.sp,
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
-            )
-        },
+                elevation = 0.dp,
+                backgroundColor = colorResource(id = R.color.background))
 
-            elevation = 0.dp,
-            backgroundColor = Color.Transparent)
-
-
-      Column(modifier = Modifier
-          .fillMaxSize().padding(50.dp),
-          verticalArrangement = Arrangement.Top,
-          horizontalAlignment = Alignment.CenterHorizontally) {
-            Spacer(modifier = Modifier.height(10.dp))
-          //Hàm Set ảnh ava
-          Box( modifier = Modifier
-              .fillMaxWidth(), contentAlignment = Alignment.Center) {
-
-//}
-
-
-              Row(
-                  horizontalArrangement = Arrangement.Center,
-                  verticalAlignment = Alignment.CenterVertically
-              ) {
-//                Column(modifier = Modifier
-//            .fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(0.dp),
-//            horizontalAlignment =  Alignment.CenterHorizontally) {
-                  Image(
-                      painterResource(id = R.drawable.user_ava),
-                      contentDescription = "Avatar",
-                      modifier = Modifier
-                          .border(
-                              BorderStroke(2.dp, colorResource(id = R.color.bar)),
-                              shape = CircleShape
-                          )
-                          .clip(CircleShape)
-                          .size(100.dp),
-                      alignment = Alignment.TopCenter,
-                      contentScale = ContentScale.Crop
-                  )
-                  IconButton(onClick = {openEdit() }, modifier = Modifier.align(Alignment.Bottom)) {
-                      Image(
-                          painterResource(id = R.drawable.edit),
-                          contentDescription = "Edit Profile",
-                          modifier = Modifier.size(20.dp, 20.dp),
-                          alignment = Alignment.Center
-                      )
-                  }
-
-              }
-
-          }
-          // Hàm Hiển thị tên và email
-            ShowInfo()
-
-          //Button logout
-            Spacer(modifier = Modifier.height(10.dp))
-          Button(
-              //Khi click vòa button sẽ chuyển sang trang đăng nhập
-              onClick = {
-                  openLogin()
-              },
-              colors = ButtonDefaults.buttonColors(
-                  backgroundColor =
-                  colorResource(id = R.color.bar), contentColor = Color.White
-              ),
-              modifier = Modifier
-                  .fillMaxWidth(0.8f)
-                  .height(50.dp)
-          )
-          {
-              Text(text = "LOGOUT")
-          }
+        }){
+                paddingValues ->
+            Row(modifier = Modifier
+                .background(colorResource(id = R.color.background))
+                .padding(paddingValues)
+            ) {
+                Column(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(50.dp),
+                    verticalArrangement = Arrangement.Top,
+                    horizontalAlignment = Alignment.CenterHorizontally) {
+                    Spacer(modifier = Modifier.height(10.dp))
+                    //Hàm Set ảnh ava
+                    Box( modifier = Modifier
+                        .fillMaxWidth(), contentAlignment = Alignment.Center) {
+                        Row(
+                            horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Image(
+                                painterResource(id = R.drawable.user_ava),
+                                contentDescription = "Avatar",
+                                modifier = Modifier
+                                    .border(
+                                        BorderStroke(2.dp, colorResource(id = R.color.bar)),
+                                        shape = CircleShape
+                                    )
+                                    .clip(CircleShape)
+                                    .size(100.dp),
+                                alignment = Alignment.TopCenter,
+                                contentScale = ContentScale.Crop
+                            )
+                            IconButton(onClick = {openEdit() }, modifier = Modifier.align(Alignment.Bottom)) {
+                                Image(
+                                    painterResource(id = R.drawable.edit),
+                                    contentDescription = "Edit Profile",
+                                    modifier = Modifier.size(20.dp, 20.dp),
+                                    alignment = Alignment.Center
+                                )
+                            }
+                        }
+                    }
+                    // Hàm Hiển thị tên và email
+                    ShowInfo()
+                    //Button logout
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Button(
+                        //Khi click vòa button sẽ chuyển sang trang đăng nhập
+                        onClick = { openLogin() },
+                        colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.bar),
+                            contentColor = Color.White),
+                        modifier = Modifier
+                            .fillMaxWidth(0.8f)
+                            .height(50.dp))
+                    { Text(text = "LOGOUT") } } }
+            }
+    }
 
 
-      }
 
-       }
    }
 
 

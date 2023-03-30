@@ -69,8 +69,6 @@ fun BottomBar(navController: NavHostController){
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically) {
         screens.forEach{screens -> Additem(screen = screens, currentDestination = currentDestination, navController = navController)}
-
-
     }
 }
 
@@ -91,30 +89,20 @@ fun RowScope.Additem(
 
     // tạo màu background, khi chọn sẽ là màu trắng còn khi không chọn thì không có màu
     val background = if(selected)  colorResource(id = R.color.border).copy(alpha = 0.3f) else Color.Transparent
-
     //Màu của Nội dung, nếu chọn sẽ có màu trắng, còn khi không chọn sẽ là màu nâu
     val contentColor = if (selected) Color.White else colorResource(id = R.color.nau)
     val tabSelect= screen
-
- 
     Box(modifier = Modifier
         //Chiều cao của thanh nav bar
         .height(40.dp)
         //icon hình tròn
         .clip(CircleShape)
-//        .border(
-//            BorderStroke(color = colorResource(id = R.color.border), width = 1.dp),
-//            shape = CircleShape
-//        )
         .background(background)
         //Sự kiện click
         .clickable(onClick = {
             navController.navigate(screen.route) {
                 popUpTo(navController.graph.findStartDestination().id)
-                launchSingleTop = true
-            }
-        }))
-    {
+                launchSingleTop = true } })) {
         Row(modifier = Modifier
                 //Khoảng cách cái icon đối với thanh nav bar
             .padding(start = 20.dp, end=20.dp,top=10.dp, bottom = 10.dp),

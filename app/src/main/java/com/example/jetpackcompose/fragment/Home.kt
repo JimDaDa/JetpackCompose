@@ -55,18 +55,9 @@ fun Home(
 
 //Phần màn hình chính
         backLayerContent = {
-//            Column(modifier = Modifier.fillMaxSize()) {
-//                    Home_back()
-//                    Home_back_hot()
-//                    Home_back_fiction()
-//
-//            }
             LazyColumn(modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(16.dp)){
 
-                item {
-
-                    Home_back(openDetails =openDetails, bookit = bookit)
-                }
+                item { Home_back(openDetails =openDetails, bookit = bookit) }
                 item { Home_back_hot() }
                 item { Home_back_fiction() }
             }

@@ -97,19 +97,14 @@ fun Home_back(bookit: List<BookItem>, openDetails: (String)-> Unit){
                 .fillMaxWidth()
                 .padding(horizontal = 28.dp),
             verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            Text_Back()
-        }
+        ) { Text_Back() }
     }
-
 
     LazyRow(
         contentPadding = PaddingValues(horizontal = 10.dp, vertical = 10.dp),
         horizontalArrangement = Arrangement.spacedBy(16.dp),
         modifier = Modifier.fillMaxWidth()
     ) {
-
         items(bookit) { booki ->
 
             Column(Modifier.width(150.dp)) {
@@ -117,7 +112,6 @@ fun Home_back(bookit: List<BookItem>, openDetails: (String)-> Unit){
                 Cover(booki=booki,openDetails=openDetails)
                 Title(booki = booki)
                 Spacer(modifier = Modifier.height(8.dp))
-
             }
 
         }

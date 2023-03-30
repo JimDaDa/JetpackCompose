@@ -25,19 +25,13 @@ class MainActivity : ComponentActivity() {
                 }
             }
             //Gọi hàm Main
-
         }
     }
 }
 
-
-
-
 @Composable
 fun Main() {
-
-
-        // Khai báo navController
+    // Khai báo navController
         val navController = rememberNavController()
 
         //Khi mở app, màn hình đầu tiên hiển thị là màn hình login
@@ -55,41 +49,25 @@ fun Main() {
                                navController.navigate("SignUp")
                     },
                     openMainScreen ={navController.navigate("mainscreen")})
-
             }
-
-
             composable("SignUp"){
                 SignUp(
-
                     openSignUpAction = {
                         //Chuyển trang đến SignUp
                     navController.navigate("SignUp") },
 
                     openLogin = {
-                    navController.navigate("login") }
-                ) {
-
+                    navController.navigate("login") }) {
                 }
             }
-
             //Màn hình chính
             composable("mainscreen"){
                 MainScreen(openMainScreenAction = {
                     navController.navigate("mainscreen")
                 })
             }
-
-
-
-
     }
-
-
-    }
-
-
-
+}
 
 @Preview(showBackground = true)
 @Composable

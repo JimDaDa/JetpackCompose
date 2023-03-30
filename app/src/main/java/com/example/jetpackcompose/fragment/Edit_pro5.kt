@@ -38,22 +38,25 @@ fun Edit_pro5( openEdit_pro5:() -> Unit, openAccount:() -> Unit){
     Box(modifier = Modifier
         .fillMaxSize()
         .background(colorResource(id = R.color.background))) {
-        TopAppBar(title = {
-            Text(
-                text = "Edit Profile",
-                fontFamily = font_heading,
-                fontWeight = FontWeight.Bold,
-                color = colorResource(id = R.color.nau),
-                fontSize = 20.sp,
-                modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
-            )
-        }, navigationIcon = {
-            IconButton(onClick = {openAccount() }){
-                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back", Modifier.padding(horizontal = 5.dp)) }
+            //Thanh top bar
+            TopAppBar(title = {
+                Text(
+                    text = "Edit Profile",
+                    fontFamily = font_heading,
+                    fontWeight = FontWeight.Bold,
+                    color = colorResource(id = R.color.nau),
+                    fontSize = 20.sp,
+                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                )
+            }, navigationIcon = {
+                IconButton(onClick = {openAccount() }){
+                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Back", Modifier.padding(horizontal = 5.dp)) }
             },
 
-            elevation = 0.dp,
-            backgroundColor = Color.Transparent)
+                elevation = 0.dp,
+                backgroundColor = Color.Transparent)
+
+
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(70.dp),
@@ -145,9 +148,8 @@ fun Edit_pro5( openEdit_pro5:() -> Unit, openAccount:() -> Unit){
 
 
         }
+            }
 
-
-}
 
 @Composable
 
